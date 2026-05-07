@@ -313,10 +313,6 @@ modal.style.display = 'none';
 
 <script>
 
-/* teu javascript antigo */
-
-/* COLE O CÓDIGO NOVO AQUI */
-
 navigator.geolocation.getCurrentPosition(async(position) => {
 
 const lat = position.coords.latitude;
@@ -325,40 +321,52 @@ const lon = position.coords.longitude;
 
 const apiKey = '3924a0c6fd1f4f713a1f3b29f8f32da8';
 
-const url =
-`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`;
-
 try{
 
-const response = await fetch(url);
+const response = await fetch(
+`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`
+);
 
 const data = await response.json();
 
-const city = data.name;
-
-const temp = Math.round(data.main.temp);
-
-const humidity = data.main.humidity;
-
-const wind = data.wind.speed;
+console.log(data);
 
 document.querySelector('.weather-box').innerHTML = `
 
-<h3>🌦️ ${city}</h3>
+<h3>🌦️ ${data.name}</h3>
 
-<p>🌡️ Temperatura: ${temp}°C</p>
+<p>🌡️ Temperatura: ${Math.round(data.main.temp)}°C</p>
 
-<p>💧 Umidade: ${humidity}%</p>
+<p>💧 Umidade: ${data.main.humidity}%</p>
 
-<p>🌬️ Vento: ${wind} km/h</p>
+<p>🌬️ Vento: ${data.wind.speed} km/h</p>
 
 `;
 
 }catch(error){
 
+document.querySelector('.weather-box').innerHTML = `
+
+<h3>❌ Erro ao carregar clima</h3>
+
+<p>Verifique a API ou tente novamente.</p>
+
+`;
+
 console.log(error);
 
 }
+
+},
+(error)=>{
+
+document.querySelector('.weather-box').innerHTML = `
+
+<h3>📍 Localização negada</h3>
+
+<p>Permita a localização no navegador.</p>
+
+`;
 
 });
 
