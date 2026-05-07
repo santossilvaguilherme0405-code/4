@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Agro Forte - Futuro Sustentável</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+
+<nav>
+
+<div class="logo">🌱 AgroFuture</div>
+
+<ul>
+<li><a href="#inicio">Início</a></li>
+<li><a href="#tecnologias">Tecnologias</a></li>
+<li><a href="#clima">Clima</a></li>
+<li><a href="#mapa">Mapa</a></li>
+</ul>
+
+<div class="buttons-nav">
+<button id="themeBtn">🌙</button>
+<button id="zoomIn">A+</button>
+<button id="zoomOut">A-</button>
+</div>
+
+</nav>
+
+</header>
+
+<section class="hero" id="inicio">
+
+<div class="hero-content">
+
+<h1>
+AGRO FORTE <br>
+FUTURO SUSTENTÁVEL
+</h1>
+
+<p>
+Equilíbrio entre produção agrícola, tecnologia e preservação ambiental.
+</p>
+
+<a href="#tecnologias" class="btn">
+Explorar o Futuro
+</a>
+
+</div>
+
+</section>
+
+<section class="section" id="tecnologias">
+
+<h2 class="title">Tecnologias Sustentáveis</h2>
+
+<div class="cards">
+
+<div class="card" onclick="openModal(1)">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxu4dNOazibN4iARJRyAJvg_WEutVfIblLxw&s">
+
+<h3>🌾 Irrigação Inteligente</h3>
+
+<p>
+Sensores modernos ajudam a economizar água.
+</p>
+
+</div>
+
+<div class="card" onclick="openModal(2)">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVRAtwWSKrPG8t0dZbfo2qdBneLQimVkOmng&s">
+
+<h3>🚁 Drones Agrícolas</h3>
+
+<p>
+Tecnologia aérea monitorando plantações.
+</p>
+
+</div>
+
+<div class="card" onclick="openModal(3)">
+
+<img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1600&auto=format&fit=crop">
+
+<h3>☀️ Energia Solar</h3>
+
+<p>
+Energia limpa para fazendas sustentáveis.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="weather-section" id="clima">
+
+<h2 class="title">Clima em Tempo Real</h2>
+
+<div class="weather-box">
+
+<h3>🌦️ Guarapuava</h3>
+
+<p>Temperatura: 18°C</p>
+
+<p>Umidade: 82%</p>
+
+<p>Vento: 9 km/h</p>
+
+</div>
+
+</section>
+
+<section class="map-section" id="mapa">
+
+<h2 class="title">Mapa do Agro Sustentável</h2>
+
+<div class="map-container">
+
+<iframe
+src="https://www.openstreetmap.org/export/embed.html?bbox=-51.55%2C-25.45%2C-51.40%2C-25.30&layer=mapnik"
+width="100%"
+height="450"
+style="border:0; border-radius:25px;">
+</iframe>
+
+</div>
+
+</section>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">&times;</span>
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalText"></p>
+
+</div>
+
+</div>
+
+<footer>
+
+<h2>🌱 Agro Forte - Futuro Sustentável</h2>
+
+</footer>
+
+<!-- VLIBRAS -->
+
+<div vw class="enabled">
+<div vw-access-button class="active"></div>
+<div vw-plugin-wrapper>
+<div class="vw-plugin-top-wrapper"></div>
+</div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+<script>
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+
+particlesJS('particles-js', {
+
+particles: {
+
+number: {
+value: 80
+},
+
+color: {
+value: '#00ff88'
+},
+
+shape: {
+type: 'circle'
+},
+
+opacity: {
+value: 0.5
+},
+
+size: {
+value: 3
+},
+
+line_linked: {
+enable: true,
+distance: 150,
+color: '#00ff88',
+opacity: 0.4,
+width: 1
+},
+
+move: {
+enable: true,
+speed: 2
+}
+
+}
+
+});
+
+const themeBtn = document.getElementById('themeBtn');
+
+themeBtn.addEventListener('click', () => {
+
+document.body.classList.toggle('light-mode');
+
+});
+
+let zoomLevel = 100;
+
+document.getElementById('zoomIn').addEventListener('click', () => {
+
+zoomLevel += 10;
+
+document.body.style.zoom = zoomLevel + '%';
+
+});
+
+document.getElementById('zoomOut').addEventListener('click', () => {
+
+zoomLevel -= 10;
+
+document.body.style.zoom = zoomLevel + '%';
+
+});
+
+function openModal(type){
+
+const modal = document.getElementById('modal');
+
+const title = document.getElementById('modalTitle');
+
+const text = document.getElementById('modalText');
+
+modal.style.display = 'block';
+
+if(type == 1){
+
+title.innerHTML = '🌾 Irrigação Inteligente';
+
+text.innerHTML =
+'Sensores analisam a umidade do solo e evitam desperdício de água.';
+
+}
+
+if(type == 2){
+
+title.innerHTML = '🚁 Drones Agrícolas';
+
+text.innerHTML =
+'Drones ajudam produtores a monitorar plantações e melhorar a produtividade.';
+
+}
+
+if(type == 3){
+
+title.innerHTML = '☀️ Energia Solar';
+
+text.innerHTML =
+'Painéis solares fornecem energia limpa e reduzem impactos ambientais.';
+
+}
+
+}
+
+function closeModal(){
+
+document.getElementById('modal').style.display = 'none';
+
+}
+
+window.onclick = function(event){
+
+const modal = document.getElementById('modal');
+
+if(event.target == modal){
+
+modal.style.display = 'none';
+
+}
+
+}
+
+<script>
+
+/* teu javascript antigo */
+
+/* COLE O CÓDIGO NOVO AQUI */
+
+navigator.geolocation.getCurrentPosition(async(position) => {
+
+const lat = position.coords.latitude;
+
+const lon = position.coords.longitude;
+
+const apiKey = '3924a0c6fd1f4f713a1f3b29f8f32da8';
+
+const url =
+`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+try{
+
+const response = await fetch(url);
+
+const data = await response.json();
+
+const city = data.name;
+
+const temp = Math.round(data.main.temp);
+
+const humidity = data.main.humidity;
+
+const wind = data.wind.speed;
+
+document.querySelector('.weather-box').innerHTML = `
+
+<h3>🌦️ ${city}</h3>
+
+<p>🌡️ Temperatura: ${temp}°C</p>
+
+<p>💧 Umidade: ${humidity}%</p>
+
+<p>🌬️ Vento: ${wind} km/h</p>
+
+`;
+
+}catch(error){
+
+console.log(error);
+
+}
+
+});
+
+</script>
+  
+</body>
+
+</html>
